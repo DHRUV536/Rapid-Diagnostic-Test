@@ -1,7 +1,8 @@
 streamlit
-opencv-python
-Pillow
 tensorflow-macos
+opencv-python
 ultralytics
-joblib
+scikit-learn
 numpy
+joblib
+Pillow
