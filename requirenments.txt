@@ -1,0 +1,7 @@
+streamlit
+opencv-python
+Pillow
+tensorflow-macos
+ultralytics
+joblib
+numpy
