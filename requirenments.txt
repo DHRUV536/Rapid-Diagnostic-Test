@@ -1,6 +1,6 @@
 streamlit
-tensorflow-macos
-opencv-python
+tensorflow
+opencv-python-headless
 ultralytics
 scikit-learn
 numpy
