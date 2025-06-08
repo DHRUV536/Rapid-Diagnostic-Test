@@ -1,6 +1,6 @@
 streamlit==1.45.1
 tensorflow==2.19.0
-opencv-python
+opencv-python-headless
 scikit-learn
 numpy
 joblib
