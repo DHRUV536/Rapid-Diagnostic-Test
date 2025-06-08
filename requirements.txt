@@ -2,6 +2,7 @@ streamlit==1.45.1
 tensorflow==2.19.0
 opencv-python-headless
 scikit-learn
+ultralytics
 numpy
 joblib
 Pillow
