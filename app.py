@@ -26,7 +26,7 @@ def extract_features_from_array(img_array):
     return features.flatten()
 
 # Streamlit UI
-st.title("Pregnancy Test Kit Classification")
+st.title("Rapid Diagnostic Test Kit Classification")
 st.markdown("Upload an image of your test kit. The model will detect and classify the result.")
 
 uploaded_file = st.file_uploader("Upload image", type=["jpg", "jpeg", "png"])
@@ -53,5 +53,5 @@ if uploaded_file is not None:
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
             
-            st.image(cropped, caption=f"Detected Kit {i+1}", use_container_width=True, width=True)
+            st.image(cropped, caption=f"Detected Kit {i+1}", use_container_width=True,width=100)
             st.success(f"Prediction: **{class_names[pred]}** (confidence: {proba[pred]:.2f})")
