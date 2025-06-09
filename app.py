@@ -34,7 +34,7 @@ uploaded_file = st.file_uploader("Upload image", type=["jpg", "jpeg", "png"])
 if uploaded_file is not None:
     img_pil = Image.open(uploaded_file).convert("RGB")
     img_np = np.array(img_pil)
-    st.image(img_np, caption="Uploaded Image", use_column_width=True)
+    st.image(img_np, caption="Uploaded Image", use_container_width=True)
 
     results = st.session_state.yolo_model(img_np)[0]
     
@@ -53,5 +53,5 @@ if uploaded_file is not None:
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
             
-            st.image(cropped, caption=f"Detected Kit {i+1}", use_column_width=False, width=True)
+            st.image(cropped, caption=f"Detected Kit {i+1}", use_container_width=True, width=True)
             st.success(f"Prediction: **{class_names[pred]}** (confidence: {proba[pred]:.2f})")
