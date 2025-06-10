@@ -52,7 +52,7 @@ if uploaded_file is not None:
             features = extract_features_from_array(cropped)
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
-            if pred=='faded':
+            if pred==2:
                 st.success(f"Faded or Invalid Image", Please use another)
                 
             
