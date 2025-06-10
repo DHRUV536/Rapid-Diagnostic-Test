@@ -30,7 +30,6 @@ st.title("Rapid Diagnostic Test Kit Classification")
 st.markdown("Upload an image of your test kit. The model will detect and classify the result.")
 
 uploaded_file = st.file_uploader("Upload image", type=["jpg", "jpeg", "png"])
-
 if uploaded_file is not None:
     img_pil = Image.open(uploaded_file).convert("RGB")
     img_np = np.array(img_pil)
@@ -42,18 +41,20 @@ if uploaded_file is not None:
         st.warning("No test kit detected.")
     else:
         st.subheader("Detection Results")
+
+        curr = 0 
         for i, box in enumerate(results.boxes):
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             cropped = img_np[y1:y2, x1:x2]
             if cropped.size == 0:
                 st.info(f"Skipped box {i+1} (empty crop)")
                 continue
-
+            st.info(f"Detected Object : {curr}")
             features = extract_features_from_array(cropped)
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
             st.image(cropped, caption=f"Detected Kit {i+1}", use_container_width=True,width=100)
             if pred==2:
-                st.error(f"Faded or Invalid Image, Please use another")
+                st.warning(f"Faded or Invalid Bounding Box")
             else:
                 st.success(f"Prediction: **{class_names[pred]}** (confidence: {proba[pred]:.2f})")
