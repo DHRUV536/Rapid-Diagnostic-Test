@@ -49,7 +49,7 @@ if uploaded_file is not None:
             if cropped.size == 0:
                 st.info(f"Skipped box {i+1} (empty crop)")
                 continue
-            st.info(f"Detected Object : {curr}")
+            st.info(f"Detected Object : {curr + 1}")
             features = extract_features_from_array(cropped)
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
@@ -58,3 +58,4 @@ if uploaded_file is not None:
                 st.warning(f"Faded or Invalid Bounding Box")
             else:
                 st.success(f"Prediction: **{class_names[pred]}** (confidence: {proba[pred]:.2f})")
+            curr+=1
