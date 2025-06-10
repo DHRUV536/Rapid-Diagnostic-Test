@@ -43,6 +43,8 @@ if uploaded_file is not None:
         st.subheader("Detection Results")
 
         curr = 0 
+        if len(results.boxes) > 1:
+            st.info(f"Multiple Objects can be Detected in image : ")
         for i, box in enumerate(results.boxes):
             x1, y1, x2, y2 = map(int, box.xyxy[0])
             cropped = img_np[y1:y2, x1:x2]
