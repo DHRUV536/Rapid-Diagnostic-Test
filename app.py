@@ -53,7 +53,7 @@ if uploaded_file is not None:
             pred = st.session_state.svm.predict([features])[0]
             proba = st.session_state.svm.predict_proba([features])[0]
             if pred==2:
-                st.success(f"Faded or Invalid Image", Please use another)
+                st.success(f"Faded or Invalid Image, Please use another")
                 
             
             st.image(cropped, caption=f"Detected Kit {i+1}", use_container_width=True,width=100)
